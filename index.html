@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equir='X-UA-compatible' content='IE=edge,chrome=1'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no'>
+    <title>Document</title>
+    <script>
+        document.documentElement.style.fontSize = window.innerWidth / 1080 * 100 + "px"
+    </script>
+    <link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <p>北京</p>
+            <input type="text" placeholder="搜索您想要的车">
+            <img src="images/head_03.jpg" alt="">
+        </header>
+
+        <footer>
+            <p><img src="images/foot_09.jpg" alt="">首页</p>
+            <p><img src="images/foot_11.jpg" alt="">买车</p>
+            <p><img src="images/foot_13.jpg" alt="">卖车</p>
+            <p><img src="images/foot_15.jpg" alt="">我的</p>
+        </footer>
+    </div>
+    <script src="js/swiper-3.4.2.min.js"></script>
+    <script>
+        var spanlist = document.querySelectorAll(".list span")
+        var myswiper = new Swiper(".tab", {
+            onSlideChangeStart: function(swiper) {
+                auto(swiper.activeIndex);
+            }
+        });
+        for (var i = 0; i < spanlist.length; i++) {
+            spanlist[i].index = i;
+            spanlist[i].onclick = function() {
+                auto(this.index);
+                myswiper.slideTo(this.index);
+            }
+        }
+
+        function auto(num) {
+            for (var i = 0; i < spanlist.length; i++) {
+                spanlist[i].classList.remove("active")
+            }
+            spanlist[num].classList.add("active");
+        }
+    </script>
+</body>
+
+</html>
